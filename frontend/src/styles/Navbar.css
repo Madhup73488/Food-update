@@ -1,0 +1,179 @@
+/* General Navbar Styles */
+.navbar {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1.25rem;
+  margin-left: auto; /* Auto margins for centering */
+  margin-right: auto; /* Auto margins for centering */
+  height: 60px;
+  width: 80%; /* Full width */
+  max-width: 1370px; /* Optional: Set a max width to prevent the navbar from stretching too wide */
+}
+
+/* Navbar Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Full width */
+  margin: 0 auto;
+  align-items: center;
+  padding: 0 20px; /* Ensure some padding within the container */
+}
+
+/* Logo Styles */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar-logo img {
+  height: 35px;
+  margin-right: 10px;
+}
+
+/* Navbar Menu */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-item {
+  margin-right: 20px;
+  margin-right: 40px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #0059b8;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+/* Button */
+.navbar-button {
+  /* background-color: #007bff; */
+  color: #1970cd;
+
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  /* transition: background-color 0.3s ease; */
+}
+
+.navbar-button:hover {
+  font-weight: 700;
+  color: #0059b8;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: 50px;
+  }
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+  }
+
+  .navbar-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .navbar-item {
+    padding: 10px 0;
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+    margin-left: 20px;
+    border: 1px transparent black;
+    border-radius: 8px;
+    margin-right: 16px;
+  }
+
+  .navbar-item:hover {
+    background-color: rgb(178 199 232 / 50%);
+  }
+
+  .navbar-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Hamburger Icon */
+  .navbar-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-toggle i {
+    font-size: 24px;
+  }
+
+  /* Dropdown Menu Container */
+  .navbar-dropdown {
+    display: none;
+    background-color: #f2f2f2;
+    width: 79%; /* Set to full width to prevent it from going off-screen */
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100px; /* Adjust this to place it directly below the navbar */
+    left: 18px; /* Ensure the dropdown is aligned to the left edge */
+  }
+
+  .navbar-dropdown.active {
+    display: block;
+  }
+
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .navbar-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Hide the hamburger icon on desktop (screens larger than 768px) */
+@media screen and (min-width: 769px) {
+  .navbar-toggle {
+    display: none;
+  }
+
+  .navbar-button-desktop {
+    display: block;
+  }
+}

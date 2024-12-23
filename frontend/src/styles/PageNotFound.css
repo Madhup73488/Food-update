@@ -1,0 +1,53 @@
+/* NotFound.css */
+.notfound-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: transparent; /* Keep the background transparent */
+  font-family: "Arial", sans-serif;
+}
+
+.notfound-content {
+  text-align: center;
+  background-color: transparent; /* Light background for content */
+  padding: 50px;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  max-width: 400px;
+  width: 100%;
+}
+
+.notfound-title {
+  font-size: 120px;
+  font-weight: bold;
+  color: #1e90ff; /* Dodger Blue for a strong blue color */
+  margin: 0;
+}
+
+.notfound-subtitle {
+  font-size: 24px;
+  color: #4169e1; /* Royal Blue for subtitle */
+  margin: 20px 0;
+}
+
+.notfound-message {
+  font-size: 16px;
+  color: #4682b4; /* Steel Blue for message */
+  margin-bottom: 30px;
+}
+
+.notfound-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #1e90ff; /* Dodger Blue for button */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.notfound-btn:hover {
+  background-color: #4682b4; /* Steel Blue on hover */
+}
