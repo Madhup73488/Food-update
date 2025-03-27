@@ -42,14 +42,27 @@ exports.registerUser = async (req, res) => {
 };
 
 // Login User
+
 exports.loginUser = async (req, res) => {
   let { email, password } = req.body;
-  password = password.trim();
+  password = password.trim(); // Trim whitespace around the entered password
+
   try {
     const user = await User.findOne({ email });
-    // console.log("user exists", user);
-    // console.log("password matching", await user.matchPassword(password));
-    if (user && (await user.matchPassword(password))) {
+    
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    // Log the entered password and stored hash for debugging
+    console.log("Entered password:", password);
+    console.log("Stored hashed password:", user.password);
+
+    // Compare the entered password with the stored hashed password
+    const isMatch = await bcrypt.compare(password, user.password);  // bcrypt does the hashing comparison internally
+    console.log("Password match result:", isMatch);
+
+    if (isMatch) {
       res.status(200).json({
         _id: user.id,
         name: user.name,
@@ -63,6 +76,7 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // Request Password Reset
 exports.requestReset = async (req, res) => {
@@ -109,14 +123,24 @@ exports.updatePassword = async (req, res) => {
     // Decode the token using the secret key
     const decoded = jwt.verify(token, JWT_SECRET);
 
+    // Ensure that the decoded token contains the correct user id
+    if (!decoded || !decoded.id) {
+      return res.status(400).json({ error: "Invalid token" });
+    }
+
     // Hash the new password before saving it
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
     // Update the user's password based on the user ID extracted from the token
-    await User.updateOne(
-      { _id: decoded.id }, // Using decoded.id for better security
-      { $set: { password: hashedPassword } }
+    const updatedUser = await User.findByIdAndUpdate(
+      decoded.id, // Using decoded.id for better security
+      { password: hashedPassword },
+      { new: true } // Return the updated document
     );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
     res.status(200).json({ message: "Password updated successfully" });
   } catch (err) {

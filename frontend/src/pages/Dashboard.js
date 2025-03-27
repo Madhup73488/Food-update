@@ -45,6 +45,12 @@ const Dashboard = () => {
         "https://www.indianveggiedelight.com/wp-content/uploads/2020/06/onion-tomato-chutney-featured.jpg",
       title: "Tomato chutney",
     },
+    {
+      id: 8,
+      image:
+        "https://www.indianveggiedelight.com/wp-content/uploads/2020/06/onion-tomato-chutney-featured.jpg",
+      title: "Tomato chutney",
+    },
   ]);
 
   const [selectedItems, setSelectedItems] = useState([]);
